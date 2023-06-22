@@ -8,7 +8,7 @@ import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import LoginIcon from '@mui/icons-material/Login';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -35,7 +35,7 @@ export default function SignIn() {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
         console.log({
-            email: data.get('email'),
+            usuario: data.get('usuario'),
             password: data.get('password'),
         });
     };
@@ -53,20 +53,20 @@ export default function SignIn() {
                     }}
                 >
                     <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-                        <LockOutlinedIcon />
+                        <LoginIcon />
                     </Avatar>
                     <Typography component="h1" variant="h5">
-                        Sign in
+                        Iniciar sesión
                     </Typography>
                     <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
                         <TextField
                             margin="normal"
                             required
                             fullWidth
-                            id="email"
-                            label="Email Address"
-                            name="email"
-                            autoComplete="email"
+                            id="usuario"
+                            label="Usuario"
+                            name="usuario"
+                            autoComplete="usuario"
                             autoFocus
                         />
                         <TextField
@@ -81,7 +81,7 @@ export default function SignIn() {
                         />
                         <FormControlLabel
                             control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
+                            label="Recuérdame"
                         />
                         <Button
                             type="submit"
@@ -89,17 +89,17 @@ export default function SignIn() {
                             variant="contained"
                             sx={{ mt: 3, mb: 2 }}
                         >
-                            Sign In
+                            Ingresar
                         </Button>
                         <Grid container>
                             <Grid item xs>
                                 <Link href="#" variant="body2">
-                                    Forgot password?
+                                    Recuperar contraseña
                                 </Link>
                             </Grid>
-                            <Grid item>
+                            <Grid item xs>
                                 <Link href="#" variant="body2">
-                                    {"Don't have an account? Sign Up"}
+                                    {"Crear cuenta"}
                                 </Link>
                             </Grid>
                         </Grid>
