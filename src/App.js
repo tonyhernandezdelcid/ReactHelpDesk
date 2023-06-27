@@ -1,16 +1,27 @@
-import './App.css';
+
+import Inicio from './componentes/inicio/Inicio';
 import SignIn from './componentes/login/SignIn';
+import {
+  BrowserRouter as Router, Routes, Route
+} from "react-router-dom";
 
 
 function App() {
   return (
-    <div className="App">
+    <Router>
 
+      <Routes>
+        <Route path='/login' element={<SignIn></SignIn>}>
 
+        </Route>
 
-      <SignIn></SignIn>
+        <Route path='/home' element={<Inicio></Inicio>}>
 
-    </div>
+        </Route>
+
+      </Routes>
+
+    </Router>
   );
 }
 
