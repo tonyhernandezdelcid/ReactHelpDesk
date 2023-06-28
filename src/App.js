@@ -1,27 +1,14 @@
 
-import Inicio from './componentes/inicio/Inicio';
-import SignIn from './componentes/login/SignIn';
-import {
-  BrowserRouter as Router, Routes, Route
-} from "react-router-dom";
+import RouterAdmin from './componentes/router/RouterAdmin';
 
 
 function App() {
+
+
   return (
-    <Router>
 
-      <Routes>
-        <Route path='/login' element={<SignIn></SignIn>}>
+    <RouterAdmin></RouterAdmin>
 
-        </Route>
-
-        <Route path='/home' element={<Inicio></Inicio>}>
-
-        </Route>
-
-      </Routes>
-
-    </Router>
   );
 }
 

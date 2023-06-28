@@ -10,14 +10,13 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Badge from '@mui/material/Badge';
-import Container from '@mui/material/Container';
-import Grid from '@mui/material/Grid';
-import Paper from '@mui/material/Paper';
 import Link from '@mui/material/Link';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import NotificationsIcon from '@mui/icons-material/Notifications';
-import { mainListItems, secondaryListItems } from './listItems';
+import { mainListItems } from './listItems';
+import { useLocation } from 'react-router-dom';
+import MenuSecundario from './MenuSecundario';
 
 
 
@@ -89,12 +88,22 @@ const defaultTheme = createTheme();
 
 
 export default function Inicio() {
+
+    const { state } = useLocation()
+    console.log(state)
+
+
+    //local storage o context
+
+
     const [open, setOpen] = React.useState(true);
     const toggleDrawer = () => {
         setOpen(!open);
     };
 
     return (
+
+
 
         <ThemeProvider theme={defaultTheme}>
             <Box sx={{ display: 'flex' }}>
@@ -125,7 +134,7 @@ export default function Inicio() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard
+                            Dashboard - {state?.usuario}
                         </Typography>
                         <IconButton color="inherit">
                             <Badge badgeContent={4} color="secondary">
@@ -152,7 +161,7 @@ export default function Inicio() {
                     <List component="nav">
                         {mainListItems}
                         <Divider sx={{ my: 1 }} />
-                        {secondaryListItems}
+                        <MenuSecundario />
                     </List>
                 </Drawer>
 
@@ -174,6 +183,7 @@ export default function Inicio() {
             </Box>
 
         </ThemeProvider>
+
 
     );
 

@@ -16,6 +16,10 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { useNavigate, useLocation } from 'react-router-dom';
+
+
+
 
 function Copyright(props) {
     return (
@@ -35,6 +39,12 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+
+    const elnavigate = useNavigate()
+    const { state } = useLocation()
+    console.log(state)
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
@@ -42,9 +52,19 @@ export default function SignIn() {
             usuario: data.get('usuario'),
             password: data.get('password'),
         });
+
+        elnavigate('/home', {
+            replace: true,
+            state: {
+                logged: true,
+                usuario: data.get('usuario')
+            }
+        })
+
     };
 
     return (
+
         <ThemeProvider theme={defaultTheme}>
             <Container component="main" maxWidth="xs">
                 <CssBaseline />
